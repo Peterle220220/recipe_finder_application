@@ -1,0 +1,934 @@
+{
+  "v": 7,
+  "name": "Recipe App API",
+  "folders": [
+    {
+      "v": 7,
+      "name": "Auth",
+      "folders": [],
+      "requests": [
+        {
+          "v": "12",
+          "name": "Register User",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/auth/register",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Save the token to environment variables\npw.env.set(\"authToken\", pw.response.body.token);\n\n",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Login User",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/auth/login",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Save the token to environment variables\npw.env.set(\"authToken\", pw.response.body.token);\n\n",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Forgot Password",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/auth/forgot-password",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"email\": \"test@example.com\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "_ref_id": "coll_ma4ms0qc_ec606928-9cb3-4134-9522-901c7a4ba54a"
+    },
+    {
+      "v": 7,
+      "name": "User",
+      "folders": [],
+      "requests": [
+        {
+          "v": "12",
+          "name": "Get User Profile",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/users/profile",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Update User Profile",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/api/users/profile",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"username\": \"updatedUsername\",\n  \"location\": \"New York, USA\",\n  \"avatar\": \"/uploads/avatar.jpg\",\n  \"preferences\": {\n    \"emailNotifications\": false,\n    \"darkMode\": true,\n    \"metricUnits\": false\n  }\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Delete User Profile",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/api/users/profile",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"password\": \"password123\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get User Recipes",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/users/recipes",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get User Favorites",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/users/favorites",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Add to Favorites",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/users/favorites",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"recipeId\": \"{{recipeId}}\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Remove from Favorites",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/api/users/favorites/{{recipeId}}",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get User Bookmarks",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/users/bookmarks",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Add to Bookmarks",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/users/bookmarks",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"recipeId\": \"{{recipeId}}\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Remove from Bookmarks",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/api/users/bookmarks/{{recipeId}}",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get User Reviews",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/users/reviews",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "_ref_id": "coll_ma4ms0qc_303f4682-0884-4a33-b3b0-c722f3c6a918"
+    },
+    {
+      "v": 7,
+      "name": "Recipes",
+      "folders": [],
+      "requests": [
+        {
+          "v": "12",
+          "name": "Get All Recipes",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/recipes",
+          "params": [
+            {
+              "key": "page",
+              "value": "1",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "keyword",
+              "value": "chicken",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "category",
+              "value": "Main Course",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "sort",
+              "value": "-rating",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Save the first recipe ID to environment variables if available\nconst response = JSON.parse(pw.response.body);\nif (response.recipes && response.recipes.length > 0) {\n  pw.environment.set(\"recipeId\", response.recipes[0]._id);\n}",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get Recipe by ID",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/recipes/{{recipeId}}",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Create Recipe",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/recipes",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Save the created recipe ID to environment variables\nconst response = JSON.parse(pw.response.body);\npw.environment.set(\"recipeId\", response._id);",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"title\": \"Delicious Pasta Carbonara\",\n  \"description\": \"A classic Italian pasta dish with creamy egg sauce, pancetta and cheese.\",\n  \"ingredients\": [\n    {\n      \"name\": \"spaghetti\",\n      \"amount\": \"400\",\n      \"unit\": \"g\"\n    },\n    {\n      \"name\": \"pancetta\",\n      \"amount\": \"150\",\n      \"unit\": \"g\"\n    },\n    {\n      \"name\": \"eggs\",\n      \"amount\": \"3\",\n      \"unit\": \"whole\"\n    },\n    {\n      \"name\": \"egg yolks\",\n      \"amount\": \"1\",\n      \"unit\": \"whole\"\n    },\n    {\n      \"name\": \"parmesan cheese\",\n      \"amount\": \"50\",\n      \"unit\": \"g\"\n    },\n    {\n      \"name\": \"black pepper\",\n      \"amount\": \"1\",\n      \"unit\": \"tsp\"\n    }\n  ],\n  \"steps\": [\n    {\n      \"description\": \"Bring a large pot of salted water to boil and cook the pasta until al dente.\",\n      \"image\": \"\"\n    },\n    {\n      \"description\": \"While pasta is cooking, fry the pancetta in a large pan until crispy.\",\n      \"image\": \"\"\n    },\n    {\n      \"description\": \"In a bowl, whisk together eggs, egg yolk, grated cheese, and black pepper.\",\n      \"image\": \"\"\n    },\n    {\n      \"description\": \"Drain the pasta, reserving a little pasta water. Add pasta to the pancetta pan while still hot.\",\n      \"image\": \"\"\n    },\n    {\n      \"description\": \"Remove pan from heat, add egg mixture and toss quickly to create a creamy sauce.\",\n      \"image\": \"\"\n    }\n  ],\n  \"prepTime\": 10,\n  \"cookTime\": 15,\n  \"servings\": 4,\n  \"difficulty\": \"Medium\",\n  \"cuisine\": \"Italian\",\n  \"category\": \"Main Course\",\n  \"tags\": [\"pasta\", \"quick dinner\", \"Italian\"],\n  \"mainImage\": \"/uploads/1683975644386.jpg\",\n  \"nutrition\": {\n    \"calories\": \"550\",\n    \"protein\": \"22g\",\n    \"carbs\": \"67g\",\n    \"fat\": \"18g\",\n    \"sodium\": \"930mg\",\n    \"fiber\": \"3g\"\n  },\n  \"notes\": \"For an authentic carbonara, never use cream! The creaminess comes from the eggs and cheese.\",\n  \"isPublic\": true\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Update Recipe",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/api/recipes/{{recipeId}}",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"title\": \"Updated Pasta Carbonara\",\n  \"servings\": 3,\n  \"tags\": [\"pasta\", \"quick dinner\", \"Italian\", \"updated\"]\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Delete Recipe",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/api/recipes/{{recipeId}}",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get Related Recipes",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/recipes/{{recipeId}}/related",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get Popular Recipes",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/recipes/popular",
+          "params": [
+            {
+              "key": "limit",
+              "value": "8",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "page",
+              "value": "1",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get Recent Recipes",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/recipes/recent",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "_ref_id": "coll_ma4ms0qc_adbd3a39-722e-48ee-8bda-8d88e1044c39"
+    },
+    {
+      "v": 7,
+      "name": "Comments",
+      "folders": [],
+      "requests": [
+        {
+          "v": "12",
+          "name": "Get Recipe Comments",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/comments/recipe/{{recipeId}}",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Save the first comment ID to environment variables if available\nconst response = JSON.parse(pw.response.body);\nif (response && response.length > 0) {\n  pw.environment.set(\"commentId\", response[0]._id);\n}",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Create Comment",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/comments",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Save the created comment ID to environment variables\nconst response = JSON.parse(pw.response.body);\npw.environment.set(\"commentId\", response._id);",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"recipeId\": \"{{recipeId}}\",\n  \"content\": \"This recipe was amazing! I loved the flavor combination and it was so easy to make.\",\n  \"rating\": 5\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Update Comment",
+          "method": "PUT",
+          "endpoint": "<<baseUrl>>/api/comments/{{commentId}}",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"content\": \"Updated review: This recipe was good, but I think it needed more seasoning.\",\n  \"rating\": 4\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Delete Comment",
+          "method": "DELETE",
+          "endpoint": "<<baseUrl>>/api/comments/{{commentId}}",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "_ref_id": "coll_ma4ms0qc_7697e380-a150-4c8c-9427-41e99dd18b3a"
+    },
+    {
+      "v": 7,
+      "name": "Categories",
+      "folders": [],
+      "requests": [
+        {
+          "v": "12",
+          "name": "Get All Categories",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/categories",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "// Save the first category ID to environment variables if available\nconst response = JSON.parse(pw.response.body);\nif (response && response.length > 0) {\n  pw.environment.set(\"categoryId\", response[0]._id);\n}",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get Category Recipes",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/categories/{{categoryId}}/recipes",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Create Category (Admin)",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/categories",
+          "params": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "preRequestScript": "",
+          "testScript": "// Save the created category ID to environment variables\nconst response = JSON.parse(pw.response.body);\npw.environment.set(\"categoryId\", response._id);",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"name\": \"Desserts\",\n  \"description\": \"Sweet treats and dessert recipes\",\n  \"image\": \"/uploads/desserts-category.jpg\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {}
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "_ref_id": "coll_ma4ms0qc_51bee768-f55e-4150-965f-5b969cc05839"
+    },
+    {
+      "v": 7,
+      "name": "Search",
+      "folders": [],
+      "requests": [
+        {
+          "v": "12",
+          "name": "Search Recipes",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/search",
+          "params": [
+            {
+              "key": "q",
+              "value": "pasta",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "withIngredients",
+              "value": "garlic,tomato",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "withoutIngredients",
+              "value": "mushroom",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "category",
+              "value": "Main Course",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "cuisine",
+              "value": "Italian",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "tags",
+              "value": "quick dinner,pasta",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "limit",
+              "value": "6",
+              "active": true,
+              "description": ""
+            },
+            {
+              "key": "page",
+              "value": "1",
+              "active": true,
+              "description": ""
+            }
+          ],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        },
+        {
+          "v": "12",
+          "name": "Get Popular Searches",
+          "method": "GET",
+          "endpoint": "<<baseUrl>>/api/search/popular",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "none",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {}
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "_ref_id": "coll_ma4ms0qc_8544205b-bf06-4e56-a3df-0f1fcd24fc67"
+    },
+    {
+      "v": 7,
+      "name": "Upload",
+      "folders": [],
+      "requests": [
+        {
+          "v": "12",
+          "name": "Upload Image",
+          "method": "POST",
+          "endpoint": "<<baseUrl>>/api/upload",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "<<authToken>>",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "multipart/form-data",
+            "body": []
+          },
+          "requestVariables": [],
+          "responses": {}
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "_ref_id": "coll_ma4ms0qd_79c900c2-1821-4b89-882a-a38cb467519b"
+    }
+  ],
+  "requests": [],
+  "auth": {
+    "authType": "inherit",
+    "authActive": true
+  },
+  "headers": [],
+  "_ref_id": "coll_ma4ms0qd_1c9e0fd2-d44c-4226-946b-8e23f0dc44ef"
+}
