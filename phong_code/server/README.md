@@ -82,7 +82,7 @@ Please ensure your code adheres to the project's coding standards and includes r
 ### Installation Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/recipe-finder.git
+   git clone https://github.com/Peterle220220/recipe_finder_application.git
 2. Navigate to the server directory:
    cd recipe-finder/server
 3. Install dependencies:
